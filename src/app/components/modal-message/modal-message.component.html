@@ -1,0 +1,30 @@
+<!-- Modal-->
+<div [class]="getMessageClass()" id={{message.id}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div [class]="getTitleClass()">
+                <button type="button" class="close modal-close" data-dismiss="modal" id={{message.getBtnHideId()}}>
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title modal-message-title" id="myModalLabel">{{message.title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="padding:15px">
+                    {{message.message}}
+                </div>
+                <input type="text" *ngIf="message.type == INPUT" [(ngModel)]="input">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" *ngIf="message.type == CONFIRM || message.type == INPUT"
+                    class="btn btn-default btn-modal btn-modal-cancel" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-default btn-modal btn-modal-accept"
+                    (click)="runAction()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a data-toggle="modal" href={{message.getHref()}} style="display:none"><button class="btn btn-primary"
+        id="{{message.getBtnId()}}"></button></a>

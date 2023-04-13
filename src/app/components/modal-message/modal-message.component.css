@@ -1,0 +1,88 @@
+.modal-bg-success {
+    background-color: rgba(0, 32, 14, 0.35);
+}
+
+.modal-message-bg-success {
+    background-color: rgba(0, 161, 70, 0.2);
+}
+
+.modal-bg-error {
+    background-color: rgba(32, 0, 4, 0.35);
+}
+
+.modal-message-bg-error {
+    background-color: rgba(161, 0, 0, 0.2);
+}
+
+.modal-bg-alert {
+    background-color: rgba(32, 27, 0, 0.35);
+}
+
+.modal-message-bg-alert {
+    background-color: rgba(158, 161, 0, 0.2);
+}
+
+.modal-bg-confirm {
+    background-color: rgba(13, 0, 32, 0.35);
+}
+
+.modal-message-bg-confirm {
+    background-color: rgba(255, 154, 68, 0.7);
+}
+
+.modal-message-title {
+    width: 100%;
+}
+
+.modal-close {
+    color: white !important;
+    margin-right: -103%;
+
+}
+
+.btn-modal {
+    width: 100px;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+.btn-modal-accept {
+    color: rgba(255, 154, 68, 0.7);
+    background-color: rgba(170, 166, 175, 0.2);
+}
+
+.btn-modal-accept:hover {
+    color: white;
+    background: rgba(255, 154, 68, 0.7);
+}
+
+.btn-modal-accept:active {
+    color: white;
+    background: rgba(255, 154, 68, 0.4);
+}
+
+.btn-modal-cancel {
+    color: rgb(205, 205, 205);
+    background-color: rgba(32, 0, 4, 0.35);
+}
+
+.btn-modal-cancel:hover {
+    color: white;
+    background-color: rgba(32, 0, 4, 0.75);
+}
+
+.btn-modal-cancel:active {
+    color: white;
+    background-color: rgba(32, 0, 4, 0.3);
+}
+

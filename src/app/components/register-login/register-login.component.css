@@ -1,0 +1,89 @@
+/* Login and Register */
+.register-login{
+	width: 350px;
+	height: 550px;
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+}
+#chk{
+	display: none;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+    border-radius: 60% / 10%;
+    background: -webkit-linear-gradient(rgba(52, 58, 64, 0.2), rgba(52, 58, 64, 0.6)), url(../../../assets/imgs/background.jpg);
+}
+label{
+	color: #ff9a44;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
+	margin: 60px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.input-log{
+	width: 70%;
+	height: 30px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	margin-bottom: 25px;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+
+.login{
+	height: 510px;
+	background: rgba(52, 58, 64, 0.7);
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.login label{
+	color: rgba(255, 255, 255, 0.8);
+	transform: scale(.6);
+}
+
+#chk:checked ~ .login{
+	transform: translateY(-550px);
+}
+#chk:checked ~ .login label{
+	transform: scale(1);	
+    color: #ff9a44;
+}
+#chk:checked ~ .signup label{
+	transform: scale(.6);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#chk:checked ~ .login{
+    background-image: -webkit-linear-gradient(rgba(52, 58, 64, 0.2), rgba(52, 58, 64, 0.7)), url(../../../assets/imgs/background.jpg);
+}
+
+#p-welcome{
+    font-size: 1.2rem !important;
+}
+
+.field-error{
+	display: flex;
+	width: 70%;
+	font-size: smaller;
+	background-color: rgba(52, 58, 64, 0.6);
+	color:#ff9a44;
+	justify-content: left;
+	display: flex;
+	margin-left: 50px;
+	margin-bottom: -15px;
+	margin-top: -20px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}

@@ -1,0 +1,5 @@
+.menu-active{
+    /*background-color: rgba(52, 58, 64, 1);*/
+    color: #ff9a44 !important;
+    transition: color 1s
+}

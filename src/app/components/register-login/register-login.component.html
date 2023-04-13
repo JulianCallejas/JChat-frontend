@@ -1,0 +1,79 @@
+<div class="register-login">
+    <input type="checkbox" id="chk" aria-hidden="true" (click)="showLogin()" />
+    <div class="signup">
+        <form #registerForm="ngForm" (ngSubmit)="registerSubmit()">
+            <div>
+                <label for="chk" aria-hidden="true">Sign-up {{loggedUser.islogged()}} </label>
+
+                <span *ngIf="rusername.touched && !rusername.valid" class="field-error">
+                    <span *ngIf="rusername.errors?.['minlength']; then invalidrusername else requiredrusername"></span>
+                    <ng-template #invalidrusername>invalid username</ng-template>
+                    <ng-template #requiredrusername>username is required</ng-template>
+                </span>
+                <input class="input-log" #rusername="ngModel" [(ngModel)]="user.username" type="text" name="username"
+                    placeholder="User name" minlength="4" maxlength="60" required />
+
+                <span *ngIf="remail.touched && !remail.valid" class="field-error">
+                    <span *ngIf="remail.errors?.['pattern']; then invalidremail else requiredremail"></span>
+                    <ng-template #invalidremail>invalid email</ng-template>
+                    <ng-template #requiredremail>email is required</ng-template>
+                </span>
+                <input class="input-log" type="email" #remail="ngModel" [(ngModel)]="user.email"
+                    pattern="^(.)+@[A-Za-z0-9]([A-Za-z0-9.\-]*[A-Za-z0-9])?\.[A-Za-z]{2,13}$" name="email"
+                    placeholder="Email" maxlength="60" required />
+
+                <span *ngIf="rpassword.touched && !rpassword.valid" class="field-error">
+                    <span *ngIf="rpassword.errors?.['minlength']; then invalidrpassword else requiredrpassword"></span>
+                    <ng-template #invalidrpassword>invalid password</ng-template>
+                    <ng-template #requiredrpassword>password is required</ng-template>
+                </span>
+                <input class="input-log" type="password" #rpassword="ngModel" [(ngModel)]="user.password"
+                    name="password" placeholder="Password" minlength="4" maxlength="60" required />
+
+                <span *ngIf="rpassword.touched && rpassword.valid && rcpass.touched && !rcpass.valid"
+                    class="field-error">
+                    <span *ngIf="!rcpass.errors?.['matchPassword']; then requiredrcpass else invalidrcpass"></span>
+                    <ng-template #invalidrcpass>password doesn't match</ng-template>
+                    <ng-template #requiredrcpass>please confirm password</ng-template>
+                </span>
+                <input class="input-log" type="password" #rcpass="ngModel" [(ngModel)]="cpass" name="pswd"
+                    placeholder="Confirm password" maxlength="60" matchPassword="password" required />
+                <button class="btn-log" type="submit" [disabled]="!registerForm.form.valid || spinners.register">
+                    <span *ngIf="!spinners.register">Sign up</span>
+                    <spinner-button *ngIf="spinners.register"></spinner-button>
+                </button>
+
+            </div>
+        </form>
+    </div>
+    <div class="login">
+        <form #loginForm="ngForm" (ngSubmit)="loginSubmit()">
+            <label for="chk" aria-hidden="true">Log-in</label>
+            <div *ngIf="login">
+                <span *ngIf="lemail.touched && !lemail.valid" class="field-error">
+                    <span *ngIf="lemail.errors?.['pattern']; then invalidlemail else requiledremail"></span>
+                    <ng-template #invalidlemail>invalid email</ng-template>
+                    <ng-template #requiledremail>email is required</ng-template>
+                </span>
+                <input class="input-log" type="email" #lemail="ngModel" [(ngModel)]="user.email"
+                    pattern="^(.)+@[A-Za-z0-9]([A-Za-z0-9.\-]*[A-Za-z0-9])?\.[A-Za-z]{2,13}$" name="lemail"
+                    placeholder="Email" maxlength="60" required />
+
+                <span *ngIf="lpassword.touched && !lpassword.valid" class="field-error">
+                    <span *ngIf="lpassword.errors?.['minlength']; then invalidlpassword else requiredlpassword"></span>
+                    <ng-template #invalidlpassword>invalid password</ng-template>
+                    <ng-template #requiredlpassword>password is required</ng-template>
+                </span>
+                <input class="input-log" type="password" #lpassword="ngModel" [(ngModel)]="user.password" name="pswd"
+                    placeholder="Password" minlength="4" maxlength="60" required />
+
+                <button class="btn-log" type="submit" [disabled]="!loginForm.form.valid || spinners.login">
+                    <span *ngIf="!spinners.login">Login</span>
+                    <spinner-button *ngIf="spinners.login"></spinner-button>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <modal-message [message]="registerMessage"></modal-message>
+</div>

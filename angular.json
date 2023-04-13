@@ -27,7 +27,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/assets/js/bootstrap/bootstrap.bundle.js",
+              "./src/assets/js/bootstrap/bootstrap.affix.js",
+              "./src/assets/js/jquery/jquery-3.4.1.js"
+            ]
           },
           "configurations": {
             "production": {
