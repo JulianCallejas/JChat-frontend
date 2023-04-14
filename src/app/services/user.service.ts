@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../models/user'
 import { config } from '../models/config';
 
@@ -54,7 +54,7 @@ export class UserService {
     }
   }
 
-  public loadUser(): User{
+  public loadUser(): Observable<User>{
     try {
       if (localStorage.getItem('loggedUser') !== null) {
         let savedData = localStorage.getItem('loggedUser');
@@ -64,12 +64,12 @@ export class UserService {
         loadedUser.username = loadedData.username;
         loadedUser.userState = loadedData.userState;
         loadedUser.token = loadedData.token;
-        return loadedUser;
+        return of(loadedUser);
       } else {
-        return new User();
+        return of(new User());
       }
     } catch (error) {
-      return new User();
+      return of(new User());
     }
   }
 

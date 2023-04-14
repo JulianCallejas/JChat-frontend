@@ -3,12 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 import { AppState } from './store/app.reducers';
-import { SetLoggedUser } from 'src/app/store/loggeduser.actions';
+import { LoadLoggedUser } from 'src/app/store/loggeduser.actions';
 
 import { UserService } from 'src/app/services/user.service';
 import { User } from './models/user';
-
-
 
 
 @Component({
@@ -26,10 +24,7 @@ export class AppComponent implements OnInit {
     private userService: UserService, 
     private store: Store<AppState>
   ){  
-    
-    this.store.dispatch(
-      new SetLoggedUser(
-        this.userService.loadUser()));
+    this.store.dispatch(new LoadLoggedUser());
     this.store.select('loggedUser').subscribe(loggedUser => {
       this.loggedUser = loggedUser;
     });
@@ -39,7 +34,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
       this.redirigir();
   }
-  
   
   public redirigir(): void{
     this.router.navigate(['/home']);  // Se debe importar e instanciar el router

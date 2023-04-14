@@ -9,6 +9,9 @@ import { User } from '../../models/user';
 import { Message } from '../../models/message';
 import { MessageType } from '../../models/messageType';
 
+
+
+
 @Component({
   selector: 'register-login',
   templateUrl: './register-login.component.html',
