@@ -13,7 +13,7 @@
                         start
                         chatting right away without the need for registration or login.
                         <br />
-                        <button class="btn-log">Join as guest</button>
+                        <button class="btn-log" [routerLink]="['/public-room']">Join as guest</button>
                         <br />
                         However, we also offer private chatrooms for users who want more privacy in their conversations.
                         To access our private chatrooms, you need to register and login to your account. This is to
@@ -23,7 +23,6 @@
                         We hope you enjoy using our chatrooms website and making new connections with other users,
                         thank you for choosing our website for your chatting needs. Happy chatting!
                     </p>
-                    <p> {{loggedUser.username}} {{loggedUser.email}} {{loggedUser.userState}} </p>
                 </div>
             </div>
             <div class="col-md-1 d-md-block header-div"></div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
@@ -27,7 +28,7 @@ export class RegisterLoginComponent implements OnInit {
   public login: boolean
   public loggedUser: User
 
-  constructor(private userService: UserService, private store: Store<AppState>) {
+  constructor(private router: Router, private userService: UserService, private store: Store<AppState>) {
     this.user = new User();
     this.loggedUser = new User();
     this.cpass = "";
@@ -75,7 +76,7 @@ export class RegisterLoginComponent implements OnInit {
     }
   }
 
-  loginSubmit() {
+  public loginSubmit() {
     this.spinners.login = true;
     this.registerMessage.type = MessageType.ERROR;
     this.registerMessage.title = "Login Error";
@@ -90,7 +91,6 @@ export class RegisterLoginComponent implements OnInit {
           this.registerMessage.message = "Welcome " + result.username + "!";
           this.registerMessage.action = () => { console.log("Go to public chat") };
           this.registerMessage.showModal();
-          
 
         }, error: err => {
           this.spinners.login = false;

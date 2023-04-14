@@ -12,7 +12,7 @@
                     <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['menu-active']" *ngIf="!loggedUser.islogged()">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/public-room']" [routerLinkActive]="['menu-active']" *ngIf="loggedUser.islogged()">Public Room</a>
+                    <a class="nav-link" [routerLink]="['/public-room']" [routerLinkActive]="['menu-active']">Public Room</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/my-account']" [routerLinkActive]="['menu-active']" *ngIf="loggedUser.islogged()">{{loggedUser.username}}</a>

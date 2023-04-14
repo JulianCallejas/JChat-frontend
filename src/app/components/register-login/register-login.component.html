@@ -3,7 +3,7 @@
     <div class="signup">
         <form #registerForm="ngForm" (ngSubmit)="registerSubmit()">
             <div>
-                <label for="chk" aria-hidden="true">Sign-up {{loggedUser.islogged()}} </label>
+                <label for="chk" aria-hidden="true">Sign-up</label>
 
                 <span *ngIf="rusername.touched && !rusername.valid" class="field-error">
                     <span *ngIf="rusername.errors?.['minlength']; then invalidrusername else requiredrusername"></span>
