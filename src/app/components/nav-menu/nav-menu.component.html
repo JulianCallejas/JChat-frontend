@@ -9,22 +9,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['menu-active']" *ngIf="!loggedUser.islogged()">Home</a>
+                    <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['menu-active']" *ngIf="!loggedUser.islogged() || loggedUser.userState=='Guest'" >Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/public-room']" [routerLinkActive]="['menu-active']">Public Room</a>
+                    <a class="nav-link" [href]="['/rooms/public']" [routerLinkActive]="['menu-active']">Public Room</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/my-account']" [routerLinkActive]="['menu-active']" *ngIf="loggedUser.islogged()">{{loggedUser.username}}</a>
+                    <a class="nav-link" [href]="['/home']" (click)="logout()" *ngIf="loggedUser.islogged()" >Log-out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="['/home']" (click)="logout()" *ngIf="loggedUser.islogged()" >Log-out</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="components.html">Components</a>
+                    <a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="['menu-active']">About</a>
                 </li>
             </ul>
         </div>

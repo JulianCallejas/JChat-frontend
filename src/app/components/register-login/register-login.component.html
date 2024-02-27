@@ -1,9 +1,40 @@
 <div class="register-login">
     <input type="checkbox" id="chk" aria-hidden="true" (click)="showLogin()" />
     <div class="signup">
+        
+        <form #loginForm="ngForm" (ngSubmit)="loginSubmit()" >
+            <label for="chk" aria-hidden="true" class="label-log" >Login</label>
+            <div *ngIf="login">
+                <span *ngIf="lemail.touched && !lemail.valid" class="field-error">
+                    <span *ngIf="lemail.errors?.['pattern']; then invalidlemail else requiledremail"></span>
+                    <ng-template #invalidlemail>invalid email</ng-template>
+                    <ng-template #requiledremail>email is required</ng-template>
+                </span>
+                <input class="input-log" type="email" #lemail="ngModel" [(ngModel)]="user.email"
+                    pattern="^(.)+@[A-Za-z0-9]([A-Za-z0-9.\-]*[A-Za-z0-9])?\.[A-Za-z]{2,13}$" name="lemail"
+                    placeholder="Email" maxlength="60" required />
+
+                <span *ngIf="lpassword.touched && !lpassword.valid" class="field-error">
+                    <span *ngIf="lpassword.errors?.['minlength']; then invalidlpassword else requiredlpassword"></span>
+                    <ng-template #invalidlpassword>invalid password</ng-template>
+                    <ng-template #requiredlpassword>password is required</ng-template>
+                </span>
+                <input class="input-log" type="password" #lpassword="ngModel" [(ngModel)]="user.password" name="pswd"
+                    placeholder="Password" minlength="4" maxlength="60" required />
+
+                <button class="btn-log" type="submit" [disabled]="!loginForm.form.valid || spinners.login">
+                    <span *ngIf="!spinners.login">Login</span>
+                    <spinner-button *ngIf="spinners.login"></spinner-button>
+                </button>
+            </div>
+        </form>
+
+
+    </div>
+    <div class="login">
         <form #registerForm="ngForm" (ngSubmit)="registerSubmit()">
             <div>
-                <label for="chk" aria-hidden="true">Sign-up</label>
+                <label for="chk" aria-hidden="true">Signup</label>
 
                 <span *ngIf="rusername.touched && !rusername.valid" class="field-error">
                     <span *ngIf="rusername.errors?.['minlength']; then invalidrusername else requiredrusername"></span>
@@ -11,7 +42,7 @@
                     <ng-template #requiredrusername>username is required</ng-template>
                 </span>
                 <input class="input-log" #rusername="ngModel" [(ngModel)]="user.username" type="text" name="username"
-                    placeholder="User name" minlength="4" maxlength="60" required />
+                    placeholder="User name" minlength="4" maxlength="15" required />
 
                 <span *ngIf="remail.touched && !remail.valid" class="field-error">
                     <span *ngIf="remail.errors?.['pattern']; then invalidremail else requiredremail"></span>
@@ -42,38 +73,65 @@
                     <span *ngIf="!spinners.register">Sign up</span>
                     <spinner-button *ngIf="spinners.register"></spinner-button>
                 </button>
+                <a class="nav-link policy-link" (click)="togglePrivacyStatement()">Privacy Statement</a>
+                <div class="policy-statement-div" (click)="togglePrivacyStatement()">
+                    <div class="policy-statement-header">
+                        <h4 aria-hidden="true">Privacy Statement</h4>
+                        <span>X</span>
+                    </div>
 
+                    <div class="privacy-text scroll-bar">
+                        <p>
+                            Thank you for using <span class="jchat">JChat</span>.
+                            <br><br>
+
+                            Here is our privacy policy that outlines how we collect, use, and protect your personal
+                            information.
+                            <br><br>
+
+                            <strong>Collection and Use of Personal Information:</strong><br>
+                            We collect personal information during the login process for the sole purpose of creating
+                            and
+                            maintaining your user account. We do not share, sell or rent your personal information to
+                            any
+                            third-party for commercial purposes.
+                            <br><br>
+
+                            <strong>Collection and Use of Messages:</strong><br>
+                            We do not save any messages or conversations on our servers. The messages are delivered only
+                            to
+                            the users who are online at the time the message is sent. Once the chatroom is closed, all
+                            messages are lost and cannot be retrieved.
+                            <br><br>
+
+                            <strong>Protection of Personal Information:</strong><br>
+                            We take the security and protection of your personal information very seriously.
+                            We have implemented a range of technical and organizational measures to ensure that your
+                            personal information is secure and protected against unauthorized access, disclosure, or
+                            destruction.
+                            <br><br>
+
+                            <strong>Cookies:</strong><br>
+                            We only use google cookies to allow the google sign-in process.
+                            <br><br>
+
+                            <strong>Changes to Privacy Policy:</strong><br>
+                            We reserve the right to update or modify this privacy policy at any time. We will notify you
+                            of any changes by posting the new privacy policy on our app. Your continued use of our app
+                            after any such changes constitutes your acceptance of the new privacy policy.
+                        </p>
+                    </div>
+                </div>
             </div>
         </form>
+        
     </div>
-    <div class="login">
-        <form #loginForm="ngForm" (ngSubmit)="loginSubmit()">
-            <label for="chk" aria-hidden="true">Log-in</label>
-            <div *ngIf="login">
-                <span *ngIf="lemail.touched && !lemail.valid" class="field-error">
-                    <span *ngIf="lemail.errors?.['pattern']; then invalidlemail else requiledremail"></span>
-                    <ng-template #invalidlemail>invalid email</ng-template>
-                    <ng-template #requiledremail>email is required</ng-template>
-                </span>
-                <input class="input-log" type="email" #lemail="ngModel" [(ngModel)]="user.email"
-                    pattern="^(.)+@[A-Za-z0-9]([A-Za-z0-9.\-]*[A-Za-z0-9])?\.[A-Za-z]{2,13}$" name="lemail"
-                    placeholder="Email" maxlength="60" required />
-
-                <span *ngIf="lpassword.touched && !lpassword.valid" class="field-error">
-                    <span *ngIf="lpassword.errors?.['minlength']; then invalidlpassword else requiredlpassword"></span>
-                    <ng-template #invalidlpassword>invalid password</ng-template>
-                    <ng-template #requiredlpassword>password is required</ng-template>
-                </span>
-                <input class="input-log" type="password" #lpassword="ngModel" [(ngModel)]="user.password" name="pswd"
-                    placeholder="Password" minlength="4" maxlength="60" required />
-
-                <button class="btn-log" type="submit" [disabled]="!loginForm.form.valid || spinners.login">
-                    <span *ngIf="!spinners.login">Login</span>
-                    <spinner-button *ngIf="spinners.login"></spinner-button>
-                </button>
-            </div>
-        </form>
-    </div>
-
     <modal-message [message]="registerMessage"></modal-message>
 </div>
+
+<div class="google-sing-btn" >
+    <div class="g_id_signin" id="google-sign-btn"></div>
+</div>
+<button class="btn-log" id="registrar" (click)="googleLogin()" style="display: none;">
+    <spinner-button></spinner-button>
+</button>

@@ -30,7 +30,19 @@ export class UserService {
     return this.http.post(this.url + '/login', data, { headers: headers });
   }
 
-  
+  public loginGoogle(token: string): Observable<any> {
+    let data = {"token": token};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');   //tambien se puede usar append para agregar mas headers
+    return this.http.post(this.url + '/login/google', data, { headers: headers });
+  }
+
+  public updateUser(user: User): Observable<any> {
+    let data = JSON.stringify(user.getUpdate());
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    headers = headers.append('Authorization','Bearer ' + user.token);
+    return this.http.patch(this.url + '/user', data, { headers: headers });
+  }
+
   public logout(): void {
     try {
       localStorage.removeItem('loggedUser');
@@ -45,7 +57,10 @@ export class UserService {
         email: user.email,
         username: user.username,
         userState: user.userState,
-        token: user.token
+        avatar: user.avatar,
+        token: user.token,
+        authSessionID: user.authSessionID,
+        authUserID: user.authUserID
       }
       localStorage.setItem('loggedUser', JSON.stringify(saveData));
       return true;
@@ -63,7 +78,10 @@ export class UserService {
         loadedUser.email = loadedData.email;
         loadedUser.username = loadedData.username;
         loadedUser.userState = loadedData.userState;
+        loadedUser.avatar = loadedData.avatar;
         loadedUser.token = loadedData.token;
+        loadedUser.authSessionID = loadedData.authSessionID;
+        loadedUser.authUserID = loadedData.authUserID;
         return of(loadedUser);
       } else {
         return of(new User());
@@ -71,6 +89,19 @@ export class UserService {
     } catch (error) {
       return of(new User());
     }
+  }
+
+  public updateThisLoggedUser(thisLoggedUser: User, newLoggedUser: User){
+    thisLoggedUser.email = newLoggedUser.email;
+    thisLoggedUser.username = newLoggedUser.username;
+    thisLoggedUser.password = newLoggedUser.password;
+    thisLoggedUser.userState = newLoggedUser.userState;
+    thisLoggedUser.avatar = newLoggedUser.avatar;
+    thisLoggedUser.active = newLoggedUser.active;
+    thisLoggedUser.token = newLoggedUser.token;
+    thisLoggedUser.loggedIn = newLoggedUser.loggedIn;
+    thisLoggedUser.authSessionID = newLoggedUser.authSessionID;
+    thisLoggedUser.authUserID = newLoggedUser.authUserID;
   }
 
 

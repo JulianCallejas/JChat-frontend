@@ -60,12 +60,16 @@ export class ModalMessageComponent implements OnInit {
       }
     }
     public runAction(){
-      if (this.message.type === MessageType.INPUT) {
-        this.message.action(this.input);
-      }else{
-        this.message.action();
-      }
       this.message.hideModal();
+      setTimeout(() => {
+        if (this.message.type === MessageType.INPUT) {
+          this.message.action(this.input);
+          return true;
+        }else{
+          this.message.action();
+          return true;
+        }
+      },200)
     }
     
 }

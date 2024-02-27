@@ -1,0 +1,67 @@
+<div class="card mb-sm-3 mb-md-0 contacts_card">
+    <!-- Search input -->
+    <div class="card-header">
+        <div class="input-group input-group-search">
+            <input type="text" placeholder="Search..." name="" class="form-control search" [(ngModel)]="filter">
+            <div class="input-group-prepend">
+                <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- Contact List -->
+    <div class="card-body contacts_body scroll-bar">
+        <ul class="contacts">
+            <li class="active">
+                <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                        <img [src]="loggedUser.avatar" class="rounded-circle user_img">
+                        <span class="online_icon"></span>
+                    </div>
+                    <div class="user_info">
+                        <span>{{loggedUser.username}}</span>
+                        <p>{{loggedUser.userState}}</p>
+                    </div>
+                </div>
+            </li>
+            <li *ngFor="let userConnected of getUserList()" [attr.id]="'user-' + userConnected[0]">
+                <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                        <img [src]="userConnected[3]" class="rounded-circle user_img">
+                        <span class="online_icon"></span>
+                    </div>
+                    <div class="user_info">
+                        <span>{{userConnected[1]}}</span>
+                        <p>{{userConnected[2]}}</p>
+                    </div>
+                    <div class="div_action_menu" *ngIf="loggedUser.email">
+                        <span  (click)="showPrivateChatOption(userConnected[0])"><i
+                                class="fas fa-ellipsis-v"></i></span>
+                        <div>
+                            <div class="action_menu" [attr.id]="getUserMenuId(userConnected[0])" (mouseleave)="showPrivateChatOption(userConnected[0])">
+                                <ul>
+                                    <li *ngIf="privateRoomList[0]"><span (click)="sendInvitation(userConnected[0],privateRoomList[0])">Invite {{userConnected[1]}} to private room {{privateRoomList[0]}}<i class="fas fa-user-plus icon-margin-left"></i></span></li>
+                                    <li>Private message <i class="fa fa-comment-dots icon-margin-left"></i></li>
+                                    <li>
+                                        <div class="input-group">
+                                            <input id="chatInput" name="chatInput" class="form-control scroll-bar priv-msg"
+                                                placeholder="Type your message..."  [(ngModel)]="privChatMessage" (keydown.enter)="onKeyDown($event, userConnected[0])"/>
+                                            <!-- <div class="input-group-append">
+                                                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                                            </div> -->
+                                            <div class="input-group-append">
+                                                <span class="input-group-text send_btn">
+                                                        <i class="fas fa-location-arrow" (click)="sendPrivMessage(userConnected[0])"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="card-footer"></div>
+</div>

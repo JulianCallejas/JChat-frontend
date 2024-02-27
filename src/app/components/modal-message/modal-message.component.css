@@ -1,3 +1,6 @@
+.modal-content{
+    color: white !important;
+}
 .modal-bg-success {
     background-color: rgba(0, 32, 14, 0.35);
 }
@@ -32,12 +35,18 @@
 
 .modal-message-title {
     width: 100%;
+    color: white;
+}
+
+.modal-body input{
+    color:white;
+    background-color: rgba(0,0,0,0.1);
+    width: 50%;
 }
 
 .modal-close {
     color: white !important;
     margin-right: -103%;
-
 }
 
 .btn-modal {
@@ -84,5 +93,15 @@
 .btn-modal-cancel:active {
     color: white;
     background-color: rgba(32, 0, 4, 0.3);
+}
+
+.profile-label{
+    width: 30%;
+}
+
+.field-error-profile{
+    color: rgba(255, 154, 68, 1);
+    margin-left: 5px;
+    font-weight: 600;
 }
 

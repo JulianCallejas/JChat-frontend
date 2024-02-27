@@ -30,6 +30,6 @@ export class NavMenuComponent implements OnInit {
   public logout(): void {
     this.userService.logout();
     this.userService.loadUser();
-    this.router.navigate(['/home']);
+    //this.router.navigate(['home']);
   }
 }

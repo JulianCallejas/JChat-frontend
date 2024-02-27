@@ -1,0 +1,113 @@
+<div class="card">
+    <!-- Messages Box header-->
+    <div class="card-header msg_head">
+        <div class="d-flex bd-highlight">
+            <div class="img_cont">
+                <img [src]="loggedUser.avatar" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+            </div>
+            <div class="user_info">
+                <span>{{loggedUser.username}}</span>
+                <p>{{loggedUser.userState}}</p>
+            </div>
+            <div class="video_cam">
+                <span>
+                    <i (click)="toggleMsgAlertActive()" [ngClass]="{'fas': msgAlertActive || !msgAlertActive,
+                        'fa-volume-down': msgAlertActive,
+                        'fa-volume-mute': !msgAlertActive}"></i>
+                </span>
+            </div>
+        </div>
+        <!-- Header Menu -->
+        <span *ngIf="loggedUser.email" class="action_menu_btn" (click)="showPrivateChatOption()"><i class="fas fa-ellipsis-v"></i></span>
+        <div class="action_menu action_menu_user" id="my_user_menu" (mouseleave)="showPrivateChatOption()">
+            <ul>
+                <li (click)="showModalProfile()"><i class="fas fa-user-circle"></i> View profile</li>
+                <li (click)="createPrivateRoom()"><i class="fas fa-comments"></i> Create private room</li>
+                <!-- <li><i class="fas fa-plus"></i> Add to group</li>
+                <li><i class="fas fa-ban"></i> Block</li>
+                <li><i class="fas fa-user-plus"></i></li>
+                <li><i class="fas fa-comment-dots"></i> chat</li> -->
+            </ul>
+        </div>
+    </div>
+    <!-- Messages Box -->
+    <div id="msgContainer" class="card-body msg_card_body scroll-bar">
+        <div *ngFor="let message of messages">
+            <div *ngIf="message[0] == mySocketId; then mine else others"></div>
+            <!-- User Message -->
+            <ng-template #mine>
+                <div class="d-flex justify-content-start mb-4">
+                    <div class="img_cont_msg">
+                        <img [src]="message[3]" [alt]="message[1]" class="rounded-circle user_img_msg">
+                    </div>
+                    <div class="msg_cotainer">
+                        <div *ngIf="message[7]=='inv'; then divmyinvitation else divmymessage"></div>
+                        <ng-template #divmymessage>
+                            {{message[4]}}
+                            <span class="msg_time"><span *ngIf="message[7]=='pri'">PRIVATE TO {{message[8]}}</span>
+                                {{message[5]}}</span>
+                        </ng-template>
+                        <ng-template #divmyinvitation>
+                            <a id="invitation" [href]="'./rooms/'+ message[4]" target="_blank">Invitation has been sent to {{message[8]}}</a>
+                            <span class="msg_time"><span>PRIVATE TO {{message[8]}}</span>
+                            {{message[5]}}</span>
+                        </ng-template>
+                    </div>
+                </div>
+            </ng-template>
+            <!-- Received Message -->
+            <ng-template #others>
+                <div class="d-flex justify-content-end mb-4">
+                    <div class="msg_cotainer_send">
+                        <div *ngIf="message[7]=='inv'; then divinvitation else divmessage"></div>
+                        <ng-template #divmessage>
+                            {{message[4]}}
+                            <span class="msg_time_send"><span *ngIf="message[7]=='pri'">PRIVATE</span> from
+                                {{message[1]}} {{message[5]}}</span>
+                        </ng-template>
+                        <ng-template #divinvitation>
+                            <a id="invitation" [href]="'./rooms/'+ message[4]" target="_blank">Click here to Join my
+                                private room</a>
+                            <span class="msg_time_send"><span>PRIVATE</span> from
+                                {{message[1]}} {{message[5]}}</span>
+                        </ng-template>
+                    </div>
+                    <div class="img_cont_msg">
+                        <img [src]="message[3]" [alt]="message[1]" class="rounded-circle user_img_msg">
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <!-- Chat text input -->
+    <div class="card-footer">
+        <div class="input-group">
+            <textarea id="chatInput" name="chatInput" class="form-control type_msg scroll-bar"
+                placeholder="Type your message..." (keydown.enter)="onKeyDown($event)"
+                (keyup)="chatMessageUpdate($event)" [(ngModel)]="chatMessage"></textarea>
+            <!-- <div class="input-group-append">
+                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+            </div> -->
+            <div class="input-group-append">
+                <span class="input-group-text send_btn">
+                    <button type="button" class="send_btn" (click)="showEmojis()">
+                        <i class="fas fa-smile"></i>
+                    </button>
+                </span>
+                <div class="action_menu" id="emojis_menu" >
+                    <div class="action_menu_emojis scroll-bar">
+                    <ul *ngFor="let item of emojis">
+                        <li (click)="addEmoji(item)">{{item}}</li>
+                    </ul>
+                </div>
+                </div>
+                <span class="input-group-text send_btn">
+                    <button type="button" class="send_btn" (click)="sendMessage()">
+                        <i class="fas fa-location-arrow"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

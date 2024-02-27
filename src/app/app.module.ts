@@ -21,6 +21,12 @@ import { SpinnerButtonComponent } from './components/spinner-button/spinner-butt
 import { loggedUserReducer } from './store/loggeduser.reducer';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { LoggedUserEffects } from './store/loggeduser.effects';
+import { ChatUsersComponent } from './components/chat-users/chat-users.component';
+import { ChatMessagesComponent } from './components/chat-messages/chat-messages.component';
+import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
+import { AboutComponent } from './pages/about/about.component';
+import { Error404Component } from './pages/error404/error404.component';
+
 
 
 @NgModule({
@@ -33,6 +39,12 @@ import { LoggedUserEffects } from './store/loggeduser.effects';
     ModalMessageComponent,
     SpinnerButtonComponent,
     NavMenuComponent,
+    ChatUsersComponent,
+    ChatMessagesComponent,
+    ModalProfileComponent,
+    AboutComponent,
+    Error404Component,
+    
   ],
   imports: [
     BrowserModule,

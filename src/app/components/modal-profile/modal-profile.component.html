@@ -1,0 +1,87 @@
+<div class="modal fade modal-bg-confirm" id="modal-profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="static" data-keyboard="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header modal-message-bg-confirm">
+                <button type="button" class="close modal-close" data-dismiss="modal" id="mp-btn-close">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title modal-message-title" id="myModalLabel">User Profile</h4>
+            </div>
+            <div class="modal-body">
+                <div class="edit-avatar-div" *ngIf="editAvatar">
+                    <img src="../../../assets/imgs/avatar/guest.png" class="rounded-circle user_img edit-avatar" (click)="setNewAvatar('guest')">
+                    <img *ngFor="let item of images" [src]="'../../../assets/imgs/avatar/avt' + item +'.png'"
+                        class="rounded-circle user_img edit-avatar" (click)="setNewAvatar(item)">
+                </div>
+                <div class="row" style="padding:15px" *ngIf="!editAvatar">
+                    <form class="profile-form" #registerForm="ngForm" (ngSubmit)="updateProfile($event)">
+                        <div class="profile-div-avatar" (click)="switchEditAvatar()">
+                            <img [src]="userData.avatar" class="rounded-circle user_img profile-avatar">
+                            <i class="fas fa-pen profile-avatar-icon"></i>
+                            <span>{{userData.email}}</span>
+                        </div>
+                        <div>
+                            <label for="username" class="profile-label">Username</label>
+                            <input class="input-log" #rusername="ngModel" [(ngModel)]="userData.username" type="text"
+                                name="username" placeholder="User name" minlength="4" maxlength="15" required />
+                            <span *ngIf="rusername.touched && !rusername.valid" class="field-error field-error-profile">
+                                <span
+                                    *ngIf="rusername.errors?.['minlength']; then invalidrusername else requiredrusername"></span>
+                                <ng-template #invalidrusername>invalid</ng-template>
+                                <ng-template #requiredrusername>required</ng-template>
+                            </span>
+                        </div>
+                        <div>
+                            <label for="userstate" class="profile-label">State</label>
+                            <input class="input-log" #ruserstate="ngModel" [(ngModel)]="userData.userState" type="text"
+                                name="userstate" placeholder="User state" minlength="4" maxlength="90" />
+                        </div>
+
+                        <div>
+                            <label for="username" class="profile-label">Password</label>
+                            <input class="input-log" type="password" #rpassword="ngModel"
+                                [(ngModel)]="userData.password" name="password" placeholder="Password" minlength="4"
+                                maxlength="60" (blur)="setRequiredPassword()" />
+                            <span *ngIf="rpassword.touched && !rpassword.valid" class="field-error field-error-profile">
+                                <span
+                                    *ngIf="rpassword.errors?.['minlength']; then invalidrpassword else requiredrpassword"></span>
+                                <ng-template #invalidrpassword>invalid</ng-template>
+                                <ng-template #requiredrpassword>password is required</ng-template>
+                            </span>
+                        </div>
+                        <div>
+                            <label for="username" class="profile-label">Confirm password</label>
+                            <input class="input-log" type="password" #rcpass="ngModel" [(ngModel)]="cpass" name="pswd"
+                                id="pmpswd" placeholder="Confirm password" maxlength="60" matchPassword="password"
+                                (focus)="setRequiredPassword()" />
+                        </div>
+                        <span
+                            *ngIf="rpassword.touched && rpassword.valid && rpassword && rcpass.touched && !rcpass.valid"
+                            class="field-error field-error-profile">
+                            <span
+                                *ngIf="!rcpass.errors?.['matchPassword']; then requiredrcpass else invalidrcpass"></span>
+                            <ng-template #invalidrcpass>invalid</ng-template>
+                            <ng-template #requiredrcpass>required</ng-template>
+                        </span>
+                        <div style="display: flex;">
+                            <button type="button" class="btn btn-default btn-modal btn-modal-cancel"
+                                data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button class="btn btn-default btn-modal btn-modal-accept" type="submit"
+                                [disabled]="!registerForm.form.valid || spinner">
+                                <span *ngIf="!spinner">Save</span>
+                                <spinner-button *ngIf="spinner"></spinner-button>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<a data-toggle="modal" href="#modal-profile" style="display:none"><button class="btn btn-primary"
+        id="togglemp"></button></a>

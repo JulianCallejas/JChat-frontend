@@ -7,13 +7,13 @@ export class Message {
     public message: string;
     public id: string;
     public action: Function;
-    
+
     constructor(
         type: MessageType,
         title: string,
         message: string,
         id = "modal-message",
-        action: Function = (input: string ="")=>void{}
+        action: Function = (input: string = "") => void {}
     ) {
         this.type = type;
         this.title = title;
@@ -22,27 +22,31 @@ export class Message {
         this.action = action;
     }
 
-    public getHref(): string{
+    public getHref(): string {
         return "#" + this.id;
     }
 
-    public getBtnId(): string{
+    public getBtnId(): string {
         return "btn-" + this.id;
     }
 
-    public getBtnHideId(): string{
+    public getBtnHideId(): string {
         return "btn-hide-" + this.id;
     }
 
-    public showModal(){
-        let mimodal = $('#'+this.getBtnId());
-        mimodal.click();
-      }
+    public showModal() {
+        $(document).ready(() => {
+            let mimodal = $('#' + this.getBtnId());
+            mimodal.click();
+        });
+    }
 
-      public hideModal(){
-        let mimodal = $('#'+this.getBtnHideId());
-        mimodal.click();
-      }
+    public hideModal() {
+        $(document).ready(() => {
+            let mimodal = $('#' + this.getBtnHideId());
+            mimodal.click();
+        });
+    }
 
 
 }

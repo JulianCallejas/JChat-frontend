@@ -1,22 +1,31 @@
 /* Login and Register */
-.register-login{
-	width: 350px;
-	height: 550px;
+.register-login {
+	width: 400px;
+	height: 600px;
 	overflow: hidden;
 	border-radius: 10px;
-	box-shadow: 5px 20px 50px #000;
+	
 }
-#chk{
+
+#chk {
 	display: none;
 }
-.signup{
+
+.signup {
 	position: relative;
-	width:100%;
+	width: 100%;
 	height: 100%;
-    border-radius: 60% / 10%;
-    background: -webkit-linear-gradient(rgba(52, 58, 64, 0.2), rgba(52, 58, 64, 0.6)), url(../../../assets/imgs/background.jpg);
+	border-radius: 60% / 10%;
+	background: -webkit-linear-gradient(rgba(52, 58, 64, 0.2), rgba(52, 58, 64, 0.6));
 }
-label{
+
+.label-log{
+	
+	padding-top: 15px;
+}
+
+
+label {
 	color: #ff9a44;
 	font-size: 2.3em;
 	justify-content: center;
@@ -26,7 +35,8 @@ label{
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
-.input-log{
+
+.input-log {
 	width: 70%;
 	height: 30px;
 	background: #e0dede;
@@ -40,44 +50,47 @@ label{
 	border-radius: 5px;
 }
 
-.login{
+.login {
 	height: 510px;
 	background: rgba(52, 58, 64, 0.7);
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
 }
-.login label{
+
+.login label {
 	color: rgba(255, 255, 255, 0.8);
 	transform: scale(.6);
 }
 
-#chk:checked ~ .login{
-	transform: translateY(-550px);
+#chk:checked~.login {
+	transform: translateY(-600px);
 }
-#chk:checked ~ .login label{
-	transform: scale(1);	
-    color: #ff9a44;
+
+#chk:checked~.login label {
+	transform: scale(1);
+	color: #ff9a44;
 }
-#chk:checked ~ .signup label{
+
+#chk:checked~.signup label {
 	transform: scale(.6);
-    color: rgba(255, 255, 255, 0.8);
+	color: rgba(255, 255, 255, 0.8);
 }
 
-#chk:checked ~ .login{
-    background-image: -webkit-linear-gradient(rgba(52, 58, 64, 0.2), rgba(52, 58, 64, 0.7)), url(../../../assets/imgs/background.jpg);
+#chk:checked~.login {
+	background-image: -webkit-linear-gradient(rgb(49, 54, 58), rgb(49, 54, 58));
 }
 
-#p-welcome{
-    font-size: 1.2rem !important;
+#p-welcome {
+	font-size: 1.2rem !important;
 }
 
-.field-error{
+.field-error {
 	display: flex;
 	width: 70%;
 	font-size: smaller;
 	background-color: rgba(52, 58, 64, 0.6);
-	color:#ff9a44;
+	color: #ff9a44;
 	justify-content: left;
 	display: flex;
 	margin-left: 50px;
@@ -86,4 +99,109 @@ label{
 	border: none;
 	outline: none;
 	border-radius: 5px;
+}
+
+.signup a {
+	text-align: center;
+	cursor: pointer;
+	color: #ff9a44;
+}
+
+.policy-link:hover{
+	color: #ff9a44 !important;
+}
+
+.policy-statement-div {
+	position: absolute;
+	display: none;
+	top: 0px;
+	left: 0px;
+	max-height: 510px;
+	min-width: 100%;
+	background: rgba(52, 58, 64, 0.7);
+	border-radius: 60% / 10%;
+	background-image: -webkit-linear-gradient(rgb(49, 54, 58), rgb(49, 54, 58));
+	cursor: pointer;
+
+}
+
+.policy-statement-header{
+	position: relative;
+}
+
+.policy-statement-header span{
+	position: absolute;
+	color: #ff9a44;
+	background-color: rgb(31, 32, 34);
+	padding: 4px 10px;
+	border-radius: 100%;
+	right: 10px;
+	top: 32px;
+	transition: all 0.3s ease;
+}
+
+.policy-statement-header span:hover{
+	background-color: #ff9a44;
+	color: white;
+}
+
+.policy-statement-div h4 {
+	padding-top: 30px;
+	width: 100%;
+	text-align: center;
+	color: #ff9a44;
+}
+
+.policy-statement-div .privacy-text {
+	height: 350px;
+	margin-top: 20px;
+	padding-left: 20px;
+	padding-right: 40px;
+	padding-bottom: 50px;
+	overflow-y: scroll;
+}
+
+.policy-statement-div .privacy-text strong {
+	color: #ff9a44;
+}
+
+.scroll-bar::-webkit-scrollbar {
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 12px;
+	border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+	background-image: radial-gradient(circle,
+			rgba(159, 159, 159, 0.86) 0%,
+			rgba(99, 99, 99, 0.89) 50%,
+			rgba(40, 40, 40, 0.72) 100%);
+	border-radius: 10px;
+}
+
+.jchat {
+	font-family: 'Allison_Script', 'Courier New', Courier, monospace;
+	font-size: xx-large;
+	color: #ff9a44;
+	position: relative;
+	margin-left: 15px;
+}
+
+
+@media screen and (max-width: 1023px) {
+	.register-login, .google-sing-btn {
+		padding-right: 80px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.register-login{
+		padding: 0 10px;
+		padding-right: 0px;
+	}
 }

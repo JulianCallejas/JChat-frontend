@@ -1,3 +1,9 @@
+let URLS:string =  "http://backendID:port";
+
+
 export const config = {
-    URL : "http://localhost:4000/JChat/"
+    URLS: URLS,
+    URL : URLS + "/JChat/",
+
+    
 }

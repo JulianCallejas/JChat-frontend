@@ -32,11 +32,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.redirigir();
+      
   }
   
-  public redirigir(): void{
-    this.router.navigate(['/home']);  // Se debe importar e instanciar el router
-  }
+  
 
 }

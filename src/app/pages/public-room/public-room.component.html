@@ -1,1 +1,22 @@
-<p>public-room works!</p>
+<div class="h-v-center">
+    <div class="container-fluid h-100 top-margin">
+        <div class="row justify-content-center h-100 messages-contacts-container">
+            <!-- Messages Box -->
+            <div class="col-md-8 col-xl-6 chat" *ngIf="loggedUser.username">
+                <div class="row justify-content-center room-title" >{{room=="public" ? "Public Room":"Private Room: "+room}}</div>
+                <chat-messages [userList]="userList" [mySocketId]="mySocketId" [messages]="messages"
+                    [chatMessage]="chatMessage" [msgAlertActive]="msgAlertActive" [createPrivRoom]="createPrivRoom"
+                    (updateChatMessage)="setChatMessage($event)" (updateMsgAlertActive)="toggleMsgAlertActive()"
+                    (sendChatMessage)="sendMessage()" (createdPrivRoom)="setPrivateRoomList($event)"></chat-messages>
+            </div>
+            <div class="col-md-4 col-xl-3 chat" *ngIf="loggedUser.username">
+                <!-- Contact list box -->
+                <chat-users [userList]="userList" [mySocketId]="mySocketId" [privateRoomList]="privateRoomList"
+                    (sendPrivateMessage)="sendPrivateMessage($event)" (sendPrivateInvitation)="sendPrivateInvitation($event)"></chat-users>
+            </div>
+        </div>
+    </div>
+</div>
+<audio id="msg-alert" class="msg-alert"></audio>
+<modal-message [message]="message"></modal-message>
+<modal-profile (profileMessage)="updateMessage($event)" (updateUserData)="updateUserData()"></modal-profile>

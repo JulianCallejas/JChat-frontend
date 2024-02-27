@@ -1,0 +1,48 @@
+.edit-avatar-div{
+    width: 100%;
+    padding-left: 50px;
+    padding-top: 10px;
+    
+}
+
+.edit-avatar{
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+.profile-form{
+    width: 100%;
+    padding-left: 30px;
+}
+
+.profile-div-avatar{
+    margin-bottom: 30px;
+}
+
+.profile-avatar{
+    margin-right: 25px;
+}
+
+.profile-avatar-icon{
+    position: absolute;
+    margin-top: 50px;
+    margin-left: -45px;
+    border: solid;
+    border-width: 2px;
+    border-radius: 30px;
+    width: 24px;
+    height: 25px;
+    padding: 4px;
+    font-size: smaller;
+    background:  rgba(255, 154, 68, 0.5);
+}
+
+.profile-label{
+    margin-right: 5px;
+}
+
+.field-error-profile{
+    color: rgba(255, 154, 68, 1);
+    margin-left: 3px;
+    font-weight: 500;
+}

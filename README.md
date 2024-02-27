@@ -1,27 +1,32 @@
 # Jchat
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+## Public and private chatrooms
+Welcome to our chatrooms project! This allows both public and private chatrooms.
 
-## Development server
+The public chatroom is available to everyone. Users can join the public chatroom and start chatting right away without the need for registration or login.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+However, this project also allows private chatrooms for users who want more privacy in their conversations. Users need to register and login in order to access private chatrooms . This is to ensure the safety and security.
 
-## Code scaffolding
+## Stack
+This is the Frontend of the project, made with Angular 15.2, rxjs and socket.io-client. All the services for the socket.io-client were self-coded.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The Backend was made with Express, Socket.io and MySql database. You need to install it to make it work [Go to backend repository](https://github.com/JulianCallejas/JChat-backend)
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the project
 
-## Running unit tests
+2. Install dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    ```bash
+    npm install
+    ```
+3. Update the file `models/config.ts` with the IP address of the backend server.
 
-## Running end-to-end tests
+4. Start the backend server. See [Backend repository](https://github.com/JulianCallejas/JChat-backend) 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+6. Start development mode
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ```bash
+    npm run dev
+    ```
