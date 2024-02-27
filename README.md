@@ -7,6 +7,13 @@ The public chatroom is available to everyone. Users can join the public chatroom
 
 However, this project also allows private chatrooms for users who want more privacy in their conversations. Users need to register and login in order to access private chatrooms . This is to ensure the safety and security.
 
+<p align="center">
+<img src="https://res.cloudinary.com/dphleqb5t/image/upload/v1709014686/JChat/JChat-Home_weqm3c.png"  title="JChat screenshot 1" alt="JChat screenshot 1" >
+</p>
+<p align="center">
+<img src="https://res.cloudinary.com/dphleqb5t/image/upload/v1709014686/JChat/JChat-Publicroom_z8uxxb.png"  title="JChat screenshot 1" alt="JChat screenshot 1" >
+</p>
+
 ## Stack
 This is the Frontend of the project, made with Angular 15.2, rxjs and socket.io-client. All the services for the socket.io-client were self-coded.
 
