@@ -95,7 +95,7 @@ export class ChatMessagesComponent implements OnInit {
   public showEmojis(){
     $('#emojis_menu').slideToggle('fast');
   }
-
+  
   public addEmoji(item){
     this.chatMessage = this.chatMessage + item + " ";
     this.updateChatMessage.emit(this.chatMessage);

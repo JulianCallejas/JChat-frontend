@@ -89,13 +89,16 @@
             <!-- <div class="input-group-append">
                 <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
             </div> -->
-            <div class="input-group-append">
+            <div class="input-group-append" >
                 <span class="input-group-text send_btn">
                     <button type="button" class="send_btn" (click)="showEmojis()">
                         <i class="fas fa-smile"></i>
                     </button>
                 </span>
                 <div class="action_menu" id="emojis_menu" >
+                    <div class="close_menu_emojis" (click)="showEmojis()" >
+                        <span >X</span>
+                    </div>
                     <div class="action_menu_emojis scroll-bar">
                     <ul *ngFor="let item of emojis">
                         <li (click)="addEmoji(item)">{{item}}</li>

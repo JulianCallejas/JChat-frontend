@@ -1,4 +1,4 @@
-.top-margin{
+.top-margin {
     margin-top: 110px !important;
     height: fit-content;
 }
@@ -52,7 +52,7 @@
     background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-.input-group-search:focus-within{
+.input-group-search:focus-within {
     background-color: rgba(193, 140, 47, 0.3) !important;
 }
 
@@ -68,11 +68,12 @@
     outline: 0px !important;
     background-color: rgba(59, 44, 18, 0.2) !important;
 }
+
 .search:focus::placeholder {
-    color:black;
+    color: black;
 }
 
-.priv-msg{
+.priv-msg {
     background-color: rgba(0, 0, 0, 1) !important;
     border: 0 !important;
     border-bottom: solid 1px white !important;
@@ -82,7 +83,7 @@
     resize: none !important;
 }
 
-.priv-msg:focus{
+.priv-msg:focus {
     background-color: rgba(0, 0, 0, 1) !important;
 }
 
@@ -106,17 +107,17 @@
     border: 0 !important;
     color: white !important;
     cursor: pointer;
-    
+
 }
 
 .attach_btn:hover {
     color: rgb(255, 154, 68) !important;
-    border:  none !important;
+    border: none !important;
 }
 
-.attach_btn:active{
-    color: rgba(255, 154, 68,0.5) !important;
-    border:  none !important;
+.attach_btn:active {
+    color: rgba(255, 154, 68, 0.5) !important;
+    border: none !important;
 }
 
 .send_btn {
@@ -127,13 +128,14 @@
     cursor: pointer;
 }
 
-.send_btn:hover, .send_btn:focus{
+.send_btn:hover,
+.send_btn:focus {
     color: rgb(255, 154, 68) !important;
     border-color: black;
 }
 
-.send_btn:active{
-    color: rgba(255, 154, 68,0.5) !important;
+.send_btn:active {
+    color: rgba(255, 154, 68, 0.5) !important;
     border: none !important;
 }
 
@@ -234,7 +236,7 @@
     background-color: rgba(21, 91, 114, 0.3);
     padding: 10px;
     position: relative;
-    color:white;
+    color: white;
 }
 
 .msg_cotainer_send {
@@ -242,13 +244,13 @@
     margin-bottom: auto;
     margin-right: 10px;
     border-radius: 25px;
-    background-color: rgba(255, 154, 68,0.5);
+    background-color: rgba(255, 154, 68, 0.5);
     padding: 10px;
     position: relative;
-    color:white;
+    color: white;
 }
 
-#invitation{
+#invitation {
     color: white !important;
 }
 
@@ -285,7 +287,8 @@
     min-width: 28px;
     text-align: end;
 }
-.div_action_menu{
+
+.div_action_menu {
     display: flex;
     align-items: center;
     width: 100%;
@@ -293,9 +296,9 @@
     margin-top: -10px;
 }
 
-.div_action_menu span i{
+.div_action_menu span i {
     min-width: 30px;
-    text-align: end;   
+    text-align: end;
 }
 
 .action_menu {
@@ -341,7 +344,7 @@
 
 }
 
-.action_menu_emojis{
+.action_menu_emojis {
     display: flex;
     flex-wrap: wrap;
     margin-top: 46px !important;
@@ -351,6 +354,25 @@
     overflow-y: auto;
 }
 
+.close_menu_emojis {
+    position: absolute;
+    display: flex;
+    justify-content: end;
+    padding: 5px 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.close_menu_emojis span {
+    padding: 1px 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+}
+
+.close_menu_emojis span:hover {
+    background-color: rgba(255, 154, 68, 0.7);
+}
 
 @media (max-width: 576px) {
     .contacts_card {
@@ -377,21 +399,85 @@
     border-radius: 10px;
 }
 
-.msg-alert{
+.msg-alert {
     visibility: hidden;
+}
+
+.toggle-contact-list {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toggle-contact-list-btn-box{
+    display: none;
 }
 
 
 @media screen and (max-width: 1023px) {
-    .messages-contacts-container{
+    .messages-contacts-container {
         padding-right: 100px;
-        
+
     }
 }
 
 @media screen and (max-width: 767px) {
-    .messages-contacts-container{
+    .messages-contacts-container {
         padding-right: 0;
+    }
+
+    .messages-box {
+        position: relative;
+        transition: all 0.1s ease;
+    }
+
+    .toggle-contact-list:checked~.messages-box {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .contact {
+        position: absolute;
+        transition: all 0.1s ease;
+        opacity: 0;
+        visibility: hidden;
+        margin-bottom: 0px;
         
     }
+
+
+    .toggle-contact-list:checked~.contact {
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        top: -45px;
+    }
+
+
+    .toggle-contact-list-btn-box {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+
+    }
+    
+    .toggle-contact-list-btn-box label{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .toggle-contact-list-btn-box label::before {
+        content: "Show Users";
+    }
+    .toggle-contact-list:checked~.toggle-contact-list-btn-box label::before {
+        content: "Show Chatroom";
+        
+
+    }
+
+
+
 }

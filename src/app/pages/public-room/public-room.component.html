@@ -2,17 +2,24 @@
     <div class="container-fluid h-100 top-margin">
         <div class="row justify-content-center h-100 messages-contacts-container">
             <!-- Messages Box -->
-            <div class="col-md-8 col-xl-6 chat" *ngIf="loggedUser.username">
+            <input type="checkbox" id="chk" class="toggle-contact-list" >
+            <div class="col-md-8 col-xl-6 chat messages-box" *ngIf="loggedUser.username">
                 <div class="row justify-content-center room-title" >{{room=="public" ? "Public Room":"Private Room: "+room}}</div>
                 <chat-messages [userList]="userList" [mySocketId]="mySocketId" [messages]="messages"
                     [chatMessage]="chatMessage" [msgAlertActive]="msgAlertActive" [createPrivRoom]="createPrivRoom"
                     (updateChatMessage)="setChatMessage($event)" (updateMsgAlertActive)="toggleMsgAlertActive()"
                     (sendChatMessage)="sendMessage()" (createdPrivRoom)="setPrivateRoomList($event)"></chat-messages>
             </div>
-            <div class="col-md-4 col-xl-3 chat" *ngIf="loggedUser.username">
+            <div class="col-md-4 col-xl-3 chat contact" *ngIf="loggedUser.username">
                 <!-- Contact list box -->
                 <chat-users [userList]="userList" [mySocketId]="mySocketId" [privateRoomList]="privateRoomList"
                     (sendPrivateMessage)="sendPrivateMessage($event)" (sendPrivateInvitation)="sendPrivateInvitation($event)"></chat-users>
+            </div>
+            <div class="toggle-contact-list-btn-box" >
+                <label class="btn-log" type="button" for="chk" >
+                    <!-- <span *ngIf="!spinners.login">Login</span> -->
+                    <span ></span>
+                </label>
             </div>
         </div>
     </div>
